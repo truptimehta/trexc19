@@ -11,6 +11,7 @@ var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obsta
 var score=0;
 
 var gameOver, restart;
+var jumpSound,dieSound,checkPointSound;
 
 localStorage["HighestScore"] = 0;
 
@@ -31,6 +32,7 @@ function preload(){
   
   gameOverImg = loadImage("gameOver.png");
   restartImg = loadImage("restart.png");
+  jumpSound=loadSound("jump.mp3");
 }
 
 function setup() {
@@ -79,6 +81,7 @@ function draw() {
   
     if(keyDown("space") && trex.y >= 159) {
       trex.velocityY = -12;
+      jumpSound.play();
     }
   
     trex.velocityY = trex.velocityY + 0.8
